@@ -1,0 +1,40 @@
+<!-- ko ifnot: settings.plugins.psucontrol -->
+<span class="help-inline label label-important">This plugin requires <a href="https://plugins.octoprint.org/plugins/psucontrol/" target="_blank">PSU Control</a> in order to function. It can be installed from the Plugin Manager.</span>
+<!-- /ko -->
+<!-- ko if: settings.plugins.psucontrol && !(settings.plugins.psucontrol.switchingMethod() === "PLUGIN" && settings.plugins.psucontrol.switchingPlugin() === "psucontrol_hubitat") -->
+    <span class="help-inline label label-important">Please set the switching method to <b>PLUGIN</b> and the switching plugin to <b>PSU Control - Hubitat</b> in the PSU Control settings to use this plugin.</span>
+<!-- /ko -->
+<!-- ko if: settings.plugins.psucontrol && !(settings.plugins.psucontrol.sensingMethod() === "PLUGIN" && settings.plugins.psucontrol.sensingPlugin() === "psucontrol_hubitat") -->
+    <span class="help-block label label-important">Please set the sensing method to <b>PLUGIN</b> and the sensing plugin to <b>PSU Control - Hubitat</b> in the PSU Control settings to use this plugin.</span>
+<!-- /ko -->
+<form class="form-horizontal">
+    <h4>PSU Control - Hubitat settings</h4>
+    <div class="control-group">
+        <label class="control-label">Address</label>
+        <div class="controls">
+            <input type="text" class="input" data-bind="value: settings.plugins.psucontrol_hubitat.address">
+            <span class="help-block">The IP address or hostname of your Hubitat hub. Do not include a trailing slash /</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Access token</label>
+        <div class="controls">
+            <input type="text" class="input" data-bind="value: settings.plugins.psucontrol_hubitat.access_token">
+            <span class="help-block">The access token listed in the Hubitat Maker API. See <a href="https://github.com/spectre3ooo/OctoPrint-PSUControl-Hubitat#configuration" target="_blank">plugin configuration</a> for more info.</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Maker API App ID</label>
+        <div class="controls">
+            <input type="text" class="input" data-bind="value: settings.plugins.psucontrol_hubitat.app_id">
+            <span class="help-block">The App ID of the Maker API instance you'd like to connect to.</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Device ID</label>
+        <div class="controls">
+            <input type="text" class="input" data-bind="value: settings.plugins.psucontrol_hubitat.device_id">
+            <span class="help-block">The Device ID of the device you'd like to control. Can be anything supporting the turn_on/turn_off services, but a switch would make the most sense.</span>
+        </div>
+    </div>
+</form>
